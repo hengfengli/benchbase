@@ -48,7 +48,9 @@ public class NewOrder extends TPCCProcedure {
     public final SQLStmt stmtGetDistSQL = new SQLStmt(
             "SELECT D_NEXT_O_ID, D_TAX " +
             "  FROM " + TPCCConstants.TABLENAME_DISTRICT +
-            " WHERE D_W_ID = ? AND D_ID = ? FOR UPDATE");
+            " WHERE D_W_ID = ? AND D_ID = ?");
+            // spanner does not support FOR UPDATE
+            // " WHERE D_W_ID = ? AND D_ID = ? FOR UPDATE");
 
     public final SQLStmt stmtInsertNewOrderSQL = new SQLStmt(
             "INSERT INTO " + TPCCConstants.TABLENAME_NEWORDER +
@@ -76,7 +78,9 @@ public class NewOrder extends TPCCProcedure {
             "       S_DIST_06, S_DIST_07, S_DIST_08, S_DIST_09, S_DIST_10" +
             "  FROM " + TPCCConstants.TABLENAME_STOCK +
             " WHERE S_I_ID = ? " +
-            "   AND S_W_ID = ? FOR UPDATE");
+            "   AND S_W_ID = ?");
+            // spanner does not support FOR UPDATE
+            // "   AND S_W_ID = ? FOR UPDATE");
 
     public final SQLStmt stmtUpdateStockSQL = new SQLStmt(
             "UPDATE " + TPCCConstants.TABLENAME_STOCK +
