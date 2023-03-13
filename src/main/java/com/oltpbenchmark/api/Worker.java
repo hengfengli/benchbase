@@ -495,7 +495,7 @@ public abstract class Worker<T extends BenchmarkModule> implements Runnable {
         // ------------------
         // SPANNER: we should be able to retry the entire transaction when meeting a concurrent modification error.
         // ------------------
-        return errorCode == 0 && sqlState.equals("P0001") && message.contains("The transaction was aborted and could not be retried due to a concurrent modification");
+        return ((errorCode == 0 && sqlState.equals("P0001")) || (errorCode == 10 && sqlState == null)) && message.contains("The transaction was aborted and could not be retried due to a concurrent modification");
     }
 
     private boolean isRetryable(SQLException ex) {

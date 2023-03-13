@@ -253,7 +253,8 @@ public class Delivery extends TPCCProcedure {
     private void updateBalanceAndDelivery(Connection conn, int w_id, int d_id, int c_id, float orderLineTotal) throws SQLException {
 
         try (PreparedStatement delivUpdateCustBalDelivCnt = this.getPreparedStatement(conn, delivUpdateCustBalDelivCntSQL)) {
-            delivUpdateCustBalDelivCnt.setBigDecimal(1, BigDecimal.valueOf(orderLineTotal));
+            //delivUpdateCustBalDelivCnt.setBigDecimal(1, BigDecimal.valueOf(orderLineTotal));
+            delivUpdateCustBalDelivCnt.setDouble(1, orderLineTotal);
             delivUpdateCustBalDelivCnt.setInt(2, w_id);
             delivUpdateCustBalDelivCnt.setInt(3, d_id);
             delivUpdateCustBalDelivCnt.setInt(4, c_id);

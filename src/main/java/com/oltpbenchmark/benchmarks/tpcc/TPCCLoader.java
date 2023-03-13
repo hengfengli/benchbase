@@ -659,7 +659,7 @@ public class TPCCLoader extends Loader<TPCCBenchmark> {
                         if (order_line.ol_delivery_d != null) {
                             orderLineStatement.setTimestamp(idx++, order_line.ol_delivery_d);
                         } else {
-                            orderLineStatement.setNull(idx++, 0);
+                            orderLineStatement.setNull(idx++, Types.TIMESTAMP);
                         }
                         orderLineStatement.setDouble(idx++, order_line.ol_amount);
                         orderLineStatement.setLong(idx++, order_line.ol_supply_w_id);
