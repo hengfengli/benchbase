@@ -438,6 +438,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <finalName>${project.artifactId}-${classifier}</finalName>
                     <recompressZippedFiles>false</recompressZippedFiles>
+                    <tarLongFileMode>posix</tarLongFileMode>
                     <descriptors>${descriptors}</descriptors>
                 </configuration>
                 <executions>

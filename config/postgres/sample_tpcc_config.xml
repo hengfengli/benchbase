@@ -4,7 +4,7 @@
     <!-- Connection details -->
     <type>POSTGRES</type>
     <driver>org.postgresql.Driver</driver>
-    <url>jdbc:postgresql://localhost:5432/benchbase?sslmode=disable&amp;ApplicationName=tpcc&amp;reWriteBatchedInserts=true</url>
+    <url>jdbc:postgresql://localhost:5432/benchbase?sslmode=disable&amp;ApplicationName=tpcc&amp;options=-c%20spanner.support_drop_cascade=true</url>
     <username>admin</username>
     <password>password</password>
     <reconnectOnConnectionFailure>true</reconnectOnConnectionFailure>
@@ -12,14 +12,14 @@
     <batchsize>128</batchsize>
 
     <!-- Scale factor is the number of warehouses in TPCC -->
-    <scalefactor>1</scalefactor>
+    <scalefactor>200</scalefactor>
 
     <!-- The workload -->
-    <terminals>1</terminals>
+    <terminals>200</terminals>
     <works>
         <work>
-            <time>60</time>
-            <rate>10000</rate>
+            <time>1800</time>
+            <rate>unlimited</rate>
             <weights>45,43,4,4,4</weights>
         </work>
     </works>
